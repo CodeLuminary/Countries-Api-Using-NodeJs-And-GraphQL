@@ -1,0 +1,30 @@
+{
+  "name": "countryapi",
+  "version": "1.0.0",
+  "description": "This is an api about country information",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeLuminary/Countries-Api-Using-NodeJs-And-GraphQL.git"
+  },
+  "keywords": [
+    "Countries"
+  ],
+  "author": "IJONI VICTOR",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeLuminary/Countries-Api-Using-NodeJs-And-GraphQL/issues"
+  },
+  "homepage": "https://github.com/CodeLuminary/Countries-Api-Using-NodeJs-And-GraphQL#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
