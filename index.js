@@ -52,6 +52,20 @@ app.use('/graphql',expressGraphQL({
     graphiql: true  //This enables graphql to be access via a graphical user interface other than postman
 }))
 
+//Let add rest api to this
+app.get('/api/countries',(req,res)=>{  //Check if the url path is /api/countries
+    res.status(200).json(countries); //Send countries information back
+})
+app.get('/api/countries/:id',(req,res)=>{
+    const countryId = req.params.id;
+    if(countryId > countries.length){ //Check if the parameter id is greater than the numbers of countries
+        res.status(200).json({
+            message: "No country with country id:" + countryId.toString() + " is available"
+        })
+    }
+    const oneCountry = countries.find(x => x.countryId == countryId); //Get just one country
+    res.status(200).json(oneCountry);
+})
 
 //Check if the code is running in production environment
 if(process.env.NODE_ENV === 'production'){ 
