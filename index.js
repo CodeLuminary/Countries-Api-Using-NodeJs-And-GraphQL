@@ -3,26 +3,47 @@ const expressGraphQL = require("express-graphql").graphqlHTTP; //import express-
 const {
     GraphQLSchema,
     GraphQLObjectType,
-    GraphQLString
+    GraphQLString,
+    GraphQLInt,
+    GraphQLList,
+    GraphQLNonNull
 } = require('graphql'); //import objects from graphql
 
 const countries = require("./countries"); // import countries array
 
 const app = express();//Create an express object
 
+//Define a graphQLObjectType which represent the structure of your data
+const CountryType = new GraphQLObjectType({
+    name: "countries",
+    description: "Countries information",
+    fields: () => ({
+        countryId: {type: GraphQLNonNull(GraphQLInt),description:"This is the id of the country when arranged alphabetically"},
+        countryCode: {type: GraphQLNonNull(GraphQLString)},
+        countryName: {type: GraphQLNonNull(GraphQLString)},
+        currencyCode: {type: GraphQLNonNull(GraphQLString)},
+        population: {type: GraphQLNonNull(GraphQLString)},
+        capital: {type: GraphQLNonNull(GraphQLString)},
+        continentName: {type: GraphQLNonNull(GraphQLString)}
+    })
+})
 
+//Define a root query that will be under the graphQLSchema
+const RootQueryType = new GraphQLObjectType({
+    name: "Query",
+    description: "This is a country api that gives you details about different countries",
+    fields: () => ({
+        worldCountries: {
+            type: new GraphQLList(CountryType),
+            description: "Information about countries",
+            resolve: () => countries
+        }
+    })
+})
 
 //Define a schema which defines how data how related & gotten
 const schema = new GraphQLSchema({
-    query: new GraphQLObjectType({
-        name: "CountryApi", //Set the name of the query
-        fields: () =>({
-            message: {
-                type: GraphQLString,
-                resolve : () => "Hello world, this is country api" //resolve determines what should be returned
-            }
-        })
-    })
+    query: RootQueryType
 });
 
 //Set express object(app) to make use of graphql
@@ -30,6 +51,7 @@ app.use('/graphql',expressGraphQL({
     schema:schema,
     graphiql: true  //This enables graphql to be access via a graphical user interface other than postman
 }))
+
 
 //Check if the code is running in production environment
 if(process.env.NODE_ENV === 'production'){ 
