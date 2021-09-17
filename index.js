@@ -6,7 +6,11 @@ const {
     GraphQLString
 } = require('graphql'); //import objects from graphql
 
+const countries = require("./countries"); // import countries array
+
 const app = express();//Create an express object
+
+
 
 //Define a schema which defines how data how related & gotten
 const schema = new GraphQLSchema({
@@ -15,7 +19,7 @@ const schema = new GraphQLSchema({
         fields: () =>({
             message: {
                 type: GraphQLString,
-                resolve : () => "Hello world, this is country api"
+                resolve : () => "Hello world, this is country api" //resolve determines what should be returned
             }
         })
     })
