@@ -6,7 +6,8 @@
             "currencyCode": "EUR",
             "population": "84000",
             "capital": "Andorra la Vella",
-            "continentName": "Europe"
+            "continentName": "Europe",
+            "NumberOfAirPorts": 1
         },
         {
             "countryId": 2,
@@ -2239,6 +2240,7 @@
             "population": "13460305",
             "capital": "Lusaka",
             "continentName": "Africa"
+            
         },
         {
             "countryId": 250,
