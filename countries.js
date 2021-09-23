@@ -7,7 +7,7 @@
             "population": "84000",
             "capital": "Andorra la Vella",
             "continentName": "Europe",
-            "NumberOfAirPorts": 1
+            "NumbersOfAirPorts": 1
         },
         {
             "countryId": 2,
