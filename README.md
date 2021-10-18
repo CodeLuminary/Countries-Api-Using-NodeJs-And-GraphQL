@@ -10,12 +10,6 @@ This is the project is a rest and graphQL api which gives information about coun
 npm install
 ```
 
-### Run React dev server (http://localhost:3000)
-
-```
-npm start
-```
-
 ### Run the JSON server (http://localhost:5000)
 
 ```
