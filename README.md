@@ -13,11 +13,6 @@ npm install
 ### Run the JSON server (http://localhost:5000)
 
 ```
-npm run server
+npm run dev
 ```
 
-### To build for production
-
-```
-npm run build
-```
