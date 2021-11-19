@@ -52,6 +52,14 @@ app.use('/graphql',expressGraphQL({
     graphiql: true  //This enables graphql to be access via a graphical user interface other than postman
 }))
 
+const cors = require('cors');
+
+app.use(cors({
+    origin: "*",
+    methods: ["GET","POST"],
+    allowedHeaders: ['Content-Type']
+}))
+
 //Let add rest api to this
 app.get('/api/countries',(req,res)=>{  //Check if the url path is /api/countries
     res.status(200).json(countries); //Send countries information back
@@ -72,6 +80,6 @@ if(process.env.NODE_ENV === 'production'){
     app.listen(); //If code is running in production environment, just listen
 }
 else{
-    const port = process.env.PORT || 5000;  //Set port that node server will listen on
+    const port = process.env.PORT || 4000;  //Set port that node server will listen on
     app.listen(port, () =>{console.log(`Server started on port ${port}`)})  
 }
